@@ -17,9 +17,10 @@ class Encounter
         if (!in_array($playerOneResult, self::RESULT_POSSIBILITIES)) {
             trigger_error(sprintf('Invalid result. Expected %s',implode(' or ', self::RESULT_POSSIBILITIES)));
         }
-        $plOne = $playerOne->getLevel();
-        $plOne += round(32 * ($playerOneResult - self::probabilityAgainst($playerOne, $playerTwo)));
-        $playerOne->setLevel($plOne);
+        $playerOne->setLevel(
+            $playerOne->getLevel() + round(32 * ($playerOneResult - self::probabilityAgainst($playerOne, $playerTwo)))
+        );
+
     }
 }
 
