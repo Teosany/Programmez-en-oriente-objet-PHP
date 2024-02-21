@@ -59,4 +59,96 @@ echo sprintf(
     $jade->getLevel()
 );
 
-exit(0);
+
+
+
+
+//
+//class User
+//{
+//    protected const STATUS_ACTIVE = 'active';
+//    protected const STATUS_INACTIVE = 'inactive';
+//    public static int $nombreUtilisateursInitialises = 0;
+//
+//    public function __construct(protected string $username, protected string $status = self::STATUS_ACTIVE)
+//    {
+//    }
+//
+//    public function setStatus(string $status): void
+//    {
+//        if (!in_array($status, [self::STATUS_ACTIVE, self::STATUS_INACTIVE])) {
+//            trigger_error(sprintf('Le status %s n\'est pas valide. Les status possibles sont : %s', $status,
+//                implode(', ', [self::STATUS_ACTIVE, self::STATUS_INACTIVE])), E_USER_ERROR);
+//        };
+//
+//        $this->status = $status;
+//    }
+//
+//    public function getStatus(): string
+//    {
+//        return $this->status;
+//    }
+//}
+//
+//
+//class Admin extends User
+//{
+//    public static int $nombreAdminInitialises = 0;
+//    public const STATUS_LOCKED = 'locked';
+//
+//    public function __construct(public string $username, public array $roles = [], public string $status = self::STATUS_ACTIVE)
+//    {
+//        parent::__construct($username, $status);
+//    }
+//
+//    public function addRole(string $role): void
+//    {
+//        $this->roles[] = $role;
+//        $this->roles = array_filter($this->roles);
+//    }
+//
+//    public function getRoles(): array
+//    {
+//        $roles = $this->roles;
+//        $roles[] = 'ADMIN';
+//
+//        return $roles;
+//    }
+//
+//    public function setRoles(array $roles): void
+//    {
+//        $this->roles = $roles;
+//    }
+//    public static function nouvelleInitialisation(): void
+//    {
+//        self::$nombreUtilisateursInitialises++;
+//        parent::$nombreUtilisateursInitialises++;
+//    }
+//    public function printStatus(): void
+//    {
+//        echo '<br><br>'.$this->status.'<br><br>';
+//    }
+//    public function setStatus(string $status): void
+//    {
+//        if (!in_array($status, [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_LOCKED])) {
+//            trigger_error(sprintf('Le status %s n\'est pas valide. Les status possibles sont : %s', $status,
+//                implode(', ', [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_LOCKED])), E_USER_ERROR);
+//        };
+//
+//        $this->status = $status;
+//    }
+//
+//    // la méthode utilisée est celle de la classe parente, puis ajoute un comportement :)
+//    public function getStatus(): string
+//    {
+//        return strtoupper(parent::getStatus());
+//    }
+//}
+//$u = new User('Greg');
+//$admin = new Admin('Lily');
+//$admin->printStatus();
+//$admin->setStatus(Admin::STATUS_LOCKED);
+//echo $admin->getStatus();
+//
+//Admin::nouvelleInitialisation();
+//var_dump(Admin::$nombreAdminInitialises, Admin::$nombreUtilisateursInitialises, User::$nombreUtilisateursInitialises);
