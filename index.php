@@ -68,12 +68,29 @@ class Player
     }
 }
 
+class QueuingPlayer extends Player
+{
+    public function __construct(Player $player, protected int $range = 1){
+        parent::__construct($player->getName(), $player->getRatio());
+    }
+    public function getRange(): int
+    {
+        return $this->range;
+    }
+    public function upgradeRange(): void
+    {
+        $this->range = min($this->range + 1, 40);
+    }
+}
+
 $greg = new Player('greg', 400);
 $jade = new Player('jade', 476);
 
 $lobby = new Lobby();
 $lobby->addPlayers($greg, $jade);
 
+$greg->upgradeRange();
 var_dump($lobby->findOponents($lobby->queuingPlayers[0]));
+
 
 exit(0);
