@@ -64,17 +64,17 @@
 
 
 
-class User
+abstract class User
 {
     protected const STATUS_ACTIVE = 'active';
     protected const STATUS_INACTIVE = 'inactive';
-    public static int $nombreUtilisateursInitialises = 0;
+    protected static int $nombreUtilisateursInitialises = 0;
 
     public function __construct(protected string $username, protected string $status = self::STATUS_ACTIVE)
     {
     }
 
-    public function setStatus(string $status): void
+    protected function setStatus(string $status): void
     {
         if (!in_array($status, [self::STATUS_ACTIVE, self::STATUS_INACTIVE])) {
             trigger_error(sprintf('Le status %s n\'est pas valide. Les status possibles sont : %s', $status,
@@ -84,10 +84,11 @@ class User
         $this->status = $status;
     }
 
-    public function getStatus(): string
+    protected function getStatus(): string
     {
         return $this->status;
     }
+    abstract public function getUsername(): string;
 }
 
 
@@ -142,12 +143,16 @@ class Admin extends User
     {
         return strtoupper(parent::getStatus());
     }
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
 }
-$u = new User('Greg');
+
 $admin = new Admin('Lily');
 $admin->printStatus();
 $admin->setStatus(Admin::STATUS_LOCKED);
 echo $admin->getStatus();
 
 Admin::nouvelleInitialisation();
-var_dump(Admin::$nombreAdminInitialises, Admin::$nombreUtilisateursInitialises, User::$nombreUtilisateursInitialises);
+//var_dump(Admin::$nombreAdminInitialises, Admin::$nombreUtilisateursInitialises, User::$nombreUtilisateursInitialises);
