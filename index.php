@@ -11,9 +11,8 @@
 
 declare(strict_types=1);
 
-
-use App\MatchMaker\Lobby;
-use App\MatchMaker\Player\Player;
+use MatchMaker\Lobby;
+use MatchMaker\Player\Player;
 spl_autoload_register();
 
 $greg = new Player('greg');

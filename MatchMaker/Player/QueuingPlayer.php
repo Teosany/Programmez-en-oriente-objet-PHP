@@ -1,5 +1,5 @@
 <?php
-namespace App\MatchMaker\Player;
+namespace MatchMaker\Player;
 
 class QueuingPlayer extends Player
 {
