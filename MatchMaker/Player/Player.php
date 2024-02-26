@@ -1,5 +1,5 @@
 <?php
-namespace MatchMaker\Player;
+namespace App\MatchMaker\Player;
 
 class Player extends AbstractPlayer
 {

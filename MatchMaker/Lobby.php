@@ -1,9 +1,11 @@
 <?php
-namespace MatchMaker\Lobby;
 
-use MatchMaker\Player\Player;
-use MatchMaker\Player\QueuingPlayer;
-spl_autoload_register();
+declare(strict_types=1);
+
+namespace App\MatchMaker;
+
+use App\MatchMaker\Player\Player;
+use App\MatchMaker\Player\QueuingPlayer;
 
 class Lobby
 {

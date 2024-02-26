@@ -10,10 +10,16 @@
  */
 
 declare(strict_types=1);
+//
+spl_autoload_register(static function (string $fqcn): void {
+    $path = sprintf('%s.php', str_replace(['App', '\\'], [__DIR__, '/'], $fqcn));
+    require_once $path;
+});
+//spl_autoload_register();
 
-use MatchMaker\Lobby;
-use MatchMaker\Player\Player;
-spl_autoload_register();
+use App\MatchMaker\Lobby;
+use App\MatchMaker\Player\Player;
+
 
 $greg = new Player('greg');
 $jade = new Player('jade');
